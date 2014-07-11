@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="center_horizontal"
+    tools:context=".MainActivity" >
+
+    <FrameLayout
+        android:id="@+id/layout_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" >
+
+        <SurfaceView
+            android:id="@+id/surfaceview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true" />
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/girl"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/camera_flash"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="flash" />
+
+        <Button
+            android:id="@+id/camera_change"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="前后切换" />
+
+        <Button
+            android:id="@+id/camera_take"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="takephoto" />
+    </LinearLayout>
+
+</RelativeLayout>
