@@ -53,7 +53,7 @@ CvScalar detectFaceColor(IplImage* img, IplImage* ref)
 			y1 = y1*73/1024;  
 			value = x1*x1+y1*y1;
 
-			if((y < 100 && value < 500) || (y >= 100 && value < 600))
+			if((y < 100 && value < 600) || (y >= 100 && value < 750) || (y >= 150 && value < 850))
 			{
 				blue += *pImg;
 				green += *(pImg + 1);

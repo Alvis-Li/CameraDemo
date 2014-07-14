@@ -68,11 +68,22 @@ IplImage* FaceFixing(char *fileMod, char *fileUser, char *fileFace, CvPoint face
 	IplImage *imgFaceFix = cvCreateImage(imgSize, imgMod->depth, 3);
 	fittingUserFace(imgMod, imgFace, imgFaceColor, facePoint, kerDist, extDist, imgFaceFix);
 
+	cvNamedWindow("dealMerge");  
+    cvShowImage("dealMerge",imgFaceFix);
+
+	// Ä¥Æ¤£¨Ë«±ßÂË²¨£©
+	IplImage *imgFaceSmooth = cvCreateImage(imgSize, imgMod->depth, 3);
+	cvSmooth(imgFaceFix, imgFaceSmooth, CV_BILATERAL, 5, 5, 20, 20);
+	cvNamedWindow("dealSmooth");  
+    cvShowImage("dealSmooth",imgFaceSmooth);
+
+	cvWaitKey(0);
 	cvReleaseImage(&imgMod);
 	cvReleaseImage(&imgUsr);
 	cvReleaseImage(&imgFaceColor);
+	cvReleaseImage(&imgFaceFix);
 
-	return imgFaceFix;
+	return imgFaceSmooth;
 }
 
 void initLocation(CvPoint p[3], int kd[3], int md[3])

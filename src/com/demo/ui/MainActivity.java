@@ -14,6 +14,7 @@ import android.hardware.Camera;
 import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.PictureCallback;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -23,7 +24,21 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
+import com.demo.lib.Myjni;
+
 public class MainActivity extends Activity {
+	// static {
+	// if (!OpenCVLoader.initDebug()) {
+	// // Handle initialization error
+	// Log.i("+++", "OpenCV load not successfully");
+	// } else {
+	// System.loadLibrary("jni");
+	// }
+	//
+	// }
+	static {
+		System.loadLibrary("jni");
+	}
 	protected static final String TAG = "main";
 	private Camera mCamera;
 
@@ -62,7 +77,6 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// 在捕获图片前进行自动对焦
 				mCamera.autoFocus(new AutoFocusCallback() {
-
 					@Override
 					public void onAutoFocus(boolean success, Camera camera) {
 						// 从Camera捕获图片
@@ -78,6 +92,18 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
+
+				String sd = Environment.getExternalStorageDirectory()
+						.getAbsolutePath();
+
+				Log.e(TAG, "" + sd);
+
+				Myjni myjni = new Myjni();
+				String pic1 = "/storage/emulated/0/model8.jpg";
+				String pic2 = "/storage/emulated/0/user8.jpg";
+				String pic3 = "/storage/emulated/0/face8.png";
+				String pic4 = "/storage/emulated/0/result8.jpg";
+				myjni.add2(pic1, pic2, pic3, pic4, 365, 146, 428, 146, 394, 216);
 
 			}
 		});
